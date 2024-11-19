@@ -1,8 +1,16 @@
 import type { Metadata } from "next";
-import {Open_Sans} from "next/font/google";
+import { Open_Sans } from "next/font/google";
 import "./globals.css";
 
-const font=Open_Sans({ subsets: ['latin']})
+import {
+  ClerkProvider,
+  SignInButton,
+  SignedIn,
+  SignedOut,
+  UserButton
+} from '@clerk/nextjs'
+
+const font = Open_Sans({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: "Team chat application",
@@ -11,16 +19,23 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
-    <html lang="en">
-      <body
-        className={font.className}
-      >
-        {children}
-      </body>
-    </html>
-  ); 
+    <ClerkProvider>
+      <html lang="en">
+      <body>
+          <SignedOut>
+            <SignInButton />
+          </SignedOut>
+          <SignedIn>
+            <UserButton />
+          </SignedIn>
+          {children}
+        </body>
+      </html>
+    </ClerkProvider>
+
+  );
 }
