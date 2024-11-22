@@ -1,3 +1,12 @@
 {
-    "explorer.compactFolders": false
+    "explorer.compactFolders": false,
+    "powermode.enabled": false,
+    "powermode.presets": "exploding-rift",
+    "powermode.combo.counterEnabled": "default",
+    "powermode.explosions.customExplosions": [
+
+    ],
+    "powermode.explosions.customCss": {
+        
+    }
 }
